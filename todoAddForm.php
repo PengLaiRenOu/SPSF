@@ -25,8 +25,7 @@ input{
                       <option value=1>中低收入戶</option> 
                       <option value=2>家庭突發因素</option>
                   </select> <br>
-
       <input type="submit" name="Submit" value="送出" />
-	</form>
+</form>
 </body>
 </html>
