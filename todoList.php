@@ -21,6 +21,12 @@ require("model/apply.php");
     <td></td>
   </tr>
 <?php
+session_start();
+if($_SESSION['id']=="teacher"){//如果是導師
+  echo "<h1>身份:導師</h1>";
+}elseif($_SESSION['id']=="secretary"){//是秘書
+  echo "<h1>身份:秘書</h1>";
+}
 $data = Student_Apply_List();
 if($data){
     $i=count($data);
