@@ -25,9 +25,17 @@ $result=mysqli_query($conn,$sql) or die("DB Error: Cannot retrieve message.");*/
   echo "申請補助種類:....<br>";
   //-----
 ?>
-<form method="post"> <!--這邊導去-->
-  意見: <textarea cols="50" rows="5"> </textarea><br>
-<input type="submit" name="submit" value="送出" />
+<form method="post">
+  意見: <textarea cols="50" rows="5" name=""> </textarea><br>
+<?php
+if($_SESSION['id']=="teacher"){//如果是導師
+  echo '<input type="submit" name="submit" value="送出" />';
+}elseif($_SESSION['id']=="secretary"){//是秘書
+  echo '<input type="submit" name="submit" value="送出" />';
+}
+
+?>
+
 </form>
 </body>
 </html>
