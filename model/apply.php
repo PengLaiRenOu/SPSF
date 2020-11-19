@@ -10,12 +10,37 @@ function Student_Apply($student, $sid, $father, $mother, $applytype) {
     }
     return false;
 }
-
-$a = Student_Apply("a", "107213004", "f", "m", 0);
-if($a){
-    echo "yes";
-}else{
-    echo "no";
+function Student_Apply_List(){
+    require("dbconnect.php");
+    $sql = "select * from apply";
+    //執行SQL
+    $result = mysqli_query($conn, $sql);
+    if ($result){
+        $data = array();
+        while ($rs = mysqli_fetch_assoc($result)) {
+            $data[] = $rs;
+        }
+        return $data;
+    }
+    return false;
 }
 
+// $a = Student_Apply("a", "107213004", "f", "m", 0);
+// if($a){
+//     echo "yes";
+// }else{
+//     echo "no";
+// }
+
+
+
+// $data = Student_Apply_List();
+// if($data){
+//     $i=count($data);
+//     for($j=0 ; $j<$i ; $j++){
+//         print_r($data[$j]);
+//     }
+// }else{
+//     echo "error";
+// }
 ?>
