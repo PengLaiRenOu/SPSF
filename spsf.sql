@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2020 年 11 月 19 日 07:58
+-- 產生時間： 2020 年 11 月 19 日 08:47
 -- 伺服器版本： 10.4.13-MariaDB
 -- PHP 版本： 7.4.7
 
@@ -34,15 +34,16 @@ CREATE TABLE `apply` (
   `father_name` varchar(10) NOT NULL,
   `mother_name` varchar(10) NOT NULL,
   `applyType` smallint(6) NOT NULL,
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `progress` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- 傾印資料表的資料 `apply`
 --
 
-INSERT INTO `apply` (`student`, `sid`, `father_name`, `mother_name`, `applyType`, `id`) VALUES
-('a', '107213004', 'f', 'm', 0, 2);
+INSERT INTO `apply` (`student`, `sid`, `father_name`, `mother_name`, `applyType`, `id`, `progress`) VALUES
+('a', '107213004', 'f', 'm', 0, 2, 1);
 
 -- --------------------------------------------------------
 
