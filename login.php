@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>登入輔助學生經費網站</h1>
-<form method="post" action="">
+<form method="post" action="path.php">
 
       Account  : <input name="account" type="text" id="account" /> <br>
 
