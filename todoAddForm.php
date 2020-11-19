@@ -20,7 +20,11 @@ input{
       父親: <input name="father" type="text" id="father" /> 
       母親: <input name="mother" type="text" id="mother" /> <br>
 
-      申請補助種類:<select name="applyType"> <option value="低收入戶"> <option value="中低收入戶"> <option value="家庭突發因素"> </select> <br>
+      申請補助種類:<select name="applyType"> 
+                      <option value=0>低收入戶</option> 
+                      <option value=1>中低收入戶</option> 
+                      <option value=2>家庭突發因素</option>
+                  </select> <br>
 
       <input type="submit" name="Submit" value="送出" />
 	</form>
