@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2020 年 11 月 19 日 07:26
+-- 產生時間： 2020 年 11 月 19 日 07:58
 -- 伺服器版本： 10.4.13-MariaDB
 -- PHP 版本： 7.4.7
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- 資料庫： `spsf`
 --
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `apply`
+--
+
+DROP TABLE IF EXISTS `apply`;
+CREATE TABLE `apply` (
+  `student` varchar(10) NOT NULL,
+  `sid` varchar(100) NOT NULL,
+  `father_name` varchar(10) NOT NULL,
+  `mother_name` varchar(10) NOT NULL,
+  `applyType` smallint(6) NOT NULL,
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `apply`
+--
+
+INSERT INTO `apply` (`student`, `sid`, `father_name`, `mother_name`, `applyType`, `id`) VALUES
+('a', '107213004', 'f', 'm', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -50,6 +73,12 @@ INSERT INTO `user` (`username`, `passwd`, `id`, `authority`) VALUES
 --
 
 --
+-- 資料表索引 `apply`
+--
+ALTER TABLE `apply`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 資料表索引 `user`
 --
 ALTER TABLE `user`
@@ -58,6 +87,12 @@ ALTER TABLE `user`
 --
 -- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
 --
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `apply`
+--
+ALTER TABLE `apply`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user`
