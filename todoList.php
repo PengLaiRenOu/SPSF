@@ -27,7 +27,7 @@ if($data){
     for($j=0 ; $j<$i ; $j++){
         echo "<tr><td>" . $data[$j]['sid'] . "</td>";
 	    echo "<td>{$data[$j]['student']}</td>";
-        echo "<a href='.php?id={$data[$j]['id']}'>查看資料</a>"."</td></tr>"; 
+        echo "<td><a href='.php?id={$data[$j]['id']}'>查看資料</a>"."</td></tr>"; 
     }
 }else{
     echo "error";
