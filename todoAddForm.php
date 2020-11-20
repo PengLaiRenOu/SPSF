@@ -11,14 +11,20 @@ require("model/dbconnect.php");
 table {
     margin-left:auto; 
     margin-right:auto;
+    border-collapse:collapse;
 }
 input{
       width: 80px;
-      height: 25px;
-      border-style: none;
+      height: 20px;
+}
+tr{
+      height: 35px;
 }
 td{
       text-align: left;
+}
+th{
+    width: 90px;
 }
 </style>
 </head>
