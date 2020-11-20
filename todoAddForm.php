@@ -8,28 +8,38 @@ require("model/dbconnect.php");
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>學生申請表</title>
 <style type="text/css">
+table {
+    margin-left:auto; 
+    margin-right:auto;
+}
 input{
       width: 80px;
+      height: 25px;
+      border-style: none;
+}
+td{
+      text-align: left;
 }
 </style>
 </head>
-<body>
-<h1>貧困學生補助經費申請表</h1>
+<body style="text-align: center;">
+<h2>貧困學生補助經費申請表</h2>
 <form method="post">
+      <table width="400" border="1">
+      <tr><th>申請人</th> <td><input name="student" type="text" id="sname" /></td>
 
-      申請人: <input name="student" type="text" id="sname" /> <br>
+      <th>學號</th> <td><input name="sID" type="text" id="sID" /></td></tr>
 
-      學號: <input name="sID" type="text" id="sID" /> <br>
+      <tr><th>父親</th> <td><input name="father" type="text" id="father" /></td>
+      <th>母親</th> <td><input name="mother" type="text" id="mother" /></td></tr>
 
-      父親: <input name="father" type="text" id="father" /> 
-      母親: <input name="mother" type="text" id="mother" /> <br>
-
-      申請補助種類:<select name="applyType"> 
+      <tr><th>申請補助種類</th><td colspan="3"><select name="applyType"> 
                       <option value=0>低收入戶</option> 
                       <option value=1>中低收入戶</option> 
                       <option value=2>家庭突發因素</option>
-                  </select> <br>
-      <input type="submit" name="Submit" value="送出" />
+                  </select> </td></tr>
+</table><br>
+<input type="submit" name="Submit" value="送出" />
 </form>
 </body>
 </html>
