@@ -14,26 +14,30 @@ require("model/apply.php");
 
 <p>學生申請清單</p>
 <hr />
+<?php
+  if($_SESSION['id']=="teacher"){//如果是導師
+    echo "<h1>身份:導師</h1>";
+  }else if($_SESSION['id']=="secretary"){//是秘書
+    echo "<h1>身份:秘書</h1>";
+  }else{
+    header("Location:login.php");
+}
+?>
 <table width="350" border="1">
   <tr>
     <td>學號</td>
     <td>學生</td>
-    <td></td>
+    <td>確認資料</td>
   </tr>
 <?php
-session_start();
-if($_SESSION['id']=="teacher"){//如果是導師
-  echo "<h1>身份:導師</h1>";
-}elseif($_SESSION['id']=="secretary"){//是秘書
-  echo "<h1>身份:秘書</h1>";
-}
+
 $data = Student_Apply_List();
 if($data){
     $i=count($data);
     for($j=0 ; $j<$i ; $j++){
         echo "<tr><td>" . $data[$j]['sid'] . "</td>";
-	    echo "<td>{$data[$j]['student']}</td>";
-        echo "<td><a href='.php?id={$data[$j]['id']}'>查看資料</a>"."</td></tr>"; 
+        echo "<td>{$data[$j]['student']}</td>";
+        echo "<td><a href='teacher.php?id={$data[$j]['id']}'>查看資料</a>"."</td></tr>"; 
     }
 }else{
     echo "error";
