@@ -32,37 +32,34 @@ th{
     <h2>貧困學生補助經費申請表</h2>
     <table id="rs" width="400" border="1">
     <?php
-    $data = Student_Apply_List();
+    $data = Student_Apply_One($_SESSION['sid']);
     if($data){
       $i=count($data);
-      for($j=0 ; $j<$i ; $j++){
-          if($_SESSION['sid'] == $data[$j]['sid']){
-            echo "<tr><th>申請人</th><td>".$data[$j]['student']."</td> <th>學號</th><td>".$data[$j]['sid']."</td></tr>";
-            echo "<tr><th>父親</th> <td>".$data[$j]['father_name']."</td><th>母親</th> <td>".$data[$j]['mother_name']."</td></tr>";
-            if($data[$j]['applyType'] == 0){
-                echo "<tr><th>申請補助種類</th><td colspan='3'>低收入戶</td></tr>";
-            }else if($data[$j]['applyType'] == 1){
-                echo "<tr><th>申請補助種類</th><td colspan='3'>中低收入戶</td></tr>";
-            }else{
-                echo "<tr><th>申請補助種類</th><td colspan='3'>家庭突發因素</td></tr>";
-            }
-            
-          }
-      }
+        echo "<tr><th>申請人</th><td>".$data['student']."</td> <th>學號</th><td>".$data['sid']."</td></tr>";
+        echo "<tr><th>父親</th> <td>".$data['father_name']."</td><th>母親</th> <td>".$data['mother_name']."</td></tr>";
+        if($data['applyType'] == 0){
+            echo "<tr><th>申請補助種類</th><td colspan='3'>低收入戶</td></tr>";
+        }else if($data['applyType'] == 1){
+            echo "<tr><th>申請補助種類</th><td colspan='3'>中低收入戶</td></tr>";
+        }else{
+            echo "<tr><th>申請補助種類</th><td colspan='3'>家庭突發因素</td></tr>";
+        }
   }else{
       echo "error";
   }
     ?>
 
     </table> <br><br> <hr/>
-    <?php
-    ?>
     <h2>審核狀態</h2>
     <table width="300" border="1">
-        <tr><th>導師訪視說明</th><td colspan="3"></td></tr> 
-        <tr><th rowspan="2">秘書審核</th><th>審核結果</th><td colspan="2"></td></tr>
-        <tr><th>審查意見</th><td colspan="2"></td></tr>
-        <tr><th>校長審核結果</th><td colspan="3"></td></tr>
+    <?php
+    $data = Student_Apply_One($_SESSION['sid']);
+    echo "<tr><th>導師訪視說明</th><td colspan='3'>".$data['teacher_opinion']."</td></tr>";
+    echo "<tr><th rowspan='2'>秘書審核</th><th>審核結果</th><td colspan='2'>".$data['results']."</td></tr>";
+    echo "<tr><th>審查意見</th><td colspan='2'>".$data['secretary_opinion']."</td></tr>";
+    echo "<tr><th>校長審核結果</th><td colspan='3'>".$data['principal＿sign']."</td></tr>";
+    ?>
+         
     </table>
 </body>
 </html>
