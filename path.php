@@ -36,8 +36,8 @@
             $_SESSION['id'] = "secretary";
             header("Location:secretary.php");
       }else if($user["authority"] == 4){
-            $_SESSION['id'] = "authority";
-            echo "not finish";
+            $_SESSION['id'] = "principal";
+            header("Location:principal.php");
       }
   }else{
       echo "error";

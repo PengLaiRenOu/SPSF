@@ -69,9 +69,9 @@ function Give_Result($res, $sid){
 function Principal＿Sign($res, $sid){
     require("dbconnect.php");
     if($res)
-        $sql = "UPDATE `apply` SET `principal＿sign`=1 WHERE `sid`='$sid'";
+        $sql = "UPDATE `apply` SET `principal＿sign`=1, `progress`=4 WHERE `sid`='$sid'";
     else
-        $sql = "UPDATE `apply` SET `principal＿sign`=0 WHERE `sid`='$sid'";
+        $sql = "UPDATE `apply` SET `principal＿sign`=0, `progress`=4 WHERE `sid`='$sid'";
     $result = mysqli_query($conn, $sql);
     if ($result){
         return true;
