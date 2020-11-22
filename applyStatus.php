@@ -32,12 +32,31 @@ th{
     <h2>貧困學生補助經費申請表</h2>
     <table id="rs" width="400" border="1">
     <?php
-    
+    $data = Student_Apply_List();
+    if($data){
+      $i=count($data);
+      for($j=0 ; $j<$i ; $j++){
+          if($_SESSION['sid'] == $data[$j]['sid']){
+            echo "<tr><th>申請人</th><td>".$data[$j]['student']."</td> <th>學號</th><td>".$data[$j]['sid']."</td></tr>";
+            echo "<tr><th>父親</th> <td>".$data[$j]['father_name']."</td><th>母親</th> <td>".$data[$j]['mother_name']."</td></tr>";
+            if($data[$j]['applyType'] == 0){
+                echo "<tr><th>申請補助種類</th><td colspan='3'>低收入戶</td></tr>";
+            }else if($data[$j]['applyType'] == 1){
+                echo "<tr><th>申請補助種類</th><td colspan='3'>中低收入戶</td></tr>";
+            }else{
+                echo "<tr><th>申請補助種類</th><td colspan='3'>家庭突發因素</td></tr>";
+            }
+            
+          }
+      }
+  }else{
+      echo "error";
+  }
     ?>
-        <tr><th>申請人</th> <td></td> <th>學號</th> <td></td></tr>
-        <tr><th>父親</th> <td></td><th>母親</th> <td></td></tr>
-        <tr><th>申請補助種類</th><td colspan="3"></td></tr>
+
     </table> <br><br> <hr/>
+    <?php
+    ?>
     <h2>審核狀態</h2>
     <table width="300" border="1">
         <tr><th>導師訪視說明</th><td colspan="3"></td></tr> 
