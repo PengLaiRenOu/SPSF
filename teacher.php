@@ -15,11 +15,17 @@
       header("Location:login.php");
     }
     if(isset($_POST['option']) && isset($_GET['sid'])){
-      $res = Give_Option(2, $_POST['option'], $_GET['sid']);
-      if($res){
-        echo "意見已新增";
-      }else{
+      $data = Student_Apply_One($_GET['sid']);
+      if($data['progress'] != 1){
+        header("Location:path.php");
         echo "error";
+      }else{
+        $res = Give_Option(2, $_POST['option'], $_GET['sid']);
+        if($res){
+          echo "意見已新增";
+        }else{
+          echo "error";
+        }
       }
     }
     if ($_SESSION['id'] != "teacher") {
@@ -31,6 +37,8 @@
       echo "<table width='350' border='1'><tr><td>申請人</td><td>學號</td><td>確認資料</td></tr>";
       $i = count($data);
       for ($j = 0; $j < $i; $j++) {
+        if($data[$j]['progress'] != 1)
+          continue;
         echo "<tr><td>" . $data[$j]['sid'] . "</td>";
         echo "<td>{$data[$j]['student']}</td>";
         echo "<td><a href='teacher.php?sid={$data[$j]['sid']}'>查看資料</a>" . "</td></tr>";

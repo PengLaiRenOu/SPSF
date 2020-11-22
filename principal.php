@@ -37,12 +37,18 @@
     header("Location:path.php");
     return;
   }
-  if(isset($_POST['decide']) && isset($_GET['sid'])){
-    $res = Principal＿Sign($_POST['decide'], $_GET['sid']);
-    if($res){
-      echo "意見已新增";
-    }else{
+  if (isset($_POST['decide']) && isset($_GET['sid'])) {
+    $data = Student_Apply_One($_GET['sid']);
+    if ($data['progress'] != 3) {
+      header("Location:path.php");
       echo "error";
+    } else {
+      $res = Principal＿Sign($_POST['decide'], $_GET['sid']);
+      if ($res) {
+        echo "意見已新增";
+      } else {
+        echo "error";
+      }
     }
   }
   $data = Student_Apply_List();
@@ -50,9 +56,9 @@
     echo "<table width='350' border='1'><tr><td>申請人</td><td>學號</td><td>確認資料</td></tr>";
     $i = count($data);
     for ($j = 0; $j < $i; $j++) {
-      if (!isset($data[$j]['secretary_opinion']))
+      if ($data[$j]['progress'] != 3)
         continue;
-      echo "<tr><td>" . $data[$j]['sid'] . "</td>";
+      echo "<tr><td>".$data[$j]['sid'] . "</td>";
       echo "<td>{$data[$j]['student']}</td>";
       echo "<td><a href='principal.php?sid={$data[$j]['sid']}'>查看資料</a>" . "</td></tr>";
     }
@@ -84,7 +90,7 @@
       echo "</table><br>";
       echo "<form method='post'>";
       echo "<select name='decide'>";
-      echo "<option value='1'>核准</option><option value='0'>否決</option>"; 
+      echo "<option value='1'>核准</option><option value='0'>否決</option>";
       echo "</select><br>";
       echo "<input type='submit' name='submit' value='送出' />";
       echo "</form>";

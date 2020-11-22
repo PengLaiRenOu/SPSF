@@ -15,11 +15,18 @@
       header("Location:login.php");
     }
     if(isset($_POST['option']) && isset($_GET['sid'])){
-      $res = Give_Option(3, $_POST['option'], $_GET['sid']);
-      if($res){
-        echo "意見已新增";
-      }else{
+      $data = Student_Apply_One($_GET['sid']);
+      if($data['progress'] != 2){
+        header("Location:path.php");
         echo "error";
+      }else{
+        $res1 = Give_Option(3, $_POST['option'], $_GET['sid']);
+        $res2 = Give_Result($_POST['money'], $_GET['sid']);
+        if($res1 && $res2){
+          echo "意見已新增";
+        }else{
+          echo "error";
+        }
       }
     }
     if ($_SESSION['id'] != "secretary") {
@@ -31,7 +38,7 @@
       echo "<table width='350' border='1'><tr><td>申請人</td><td>學號</td><td>確認資料</td></tr>";
       $i = count($data);
       for ($j = 0; $j < $i; $j++) {
-        if(!isset($data[$j]['teacher_opinion']))
+        if($data[$j]['progress'] != 2)
             continue;
         echo "<tr><td>" . $data[$j]['sid'] . "</td>";
         echo "<td>{$data[$j]['student']}</td>";
@@ -58,6 +65,8 @@
         }
       }
       echo "<form method='post'>";
+      echo "未符合補助條件請填-1<br>";
+      echo "審核結果:<input type='text' name='money'><br>";
       echo "意見: <textarea cols='50' rows='5' name='option'></textarea><br>";
       echo "<input type='submit' name='submit' value='送出' />";
       echo "</form>";

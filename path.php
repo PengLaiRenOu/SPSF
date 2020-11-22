@@ -11,8 +11,8 @@
         header("Location:teacher.php");
     }else if($_SESSION['id'] == "secretary"){
         header("Location:secretary.php");
-    }else if($_SESSION['id'] == "authority"){
-        header("Location:authority.php");
+    }else if($_SESSION['id'] == "principal"){
+        header("Location:principal.php");
     }else{
         echo "error";
     }
@@ -22,7 +22,7 @@
   $user = User_login($_POST['account'], $_POST['password']);
   if($user){
       if($user["authority"] == 1){
-        //$_SESSION['sid'] = $_POST['account'];
+        $_SESSION['sid'] = $_POST['account'];
         $_SESSION['id'] = "student";
         if($_SESSION[$_SESSION['id']] == "OK"){
             header("Location:applyStatus.php");

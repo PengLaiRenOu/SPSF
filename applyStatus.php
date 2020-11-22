@@ -57,7 +57,12 @@ th{
     echo "<tr><th>導師訪視說明</th><td colspan='3'>".$data['teacher_opinion']."</td></tr>";
     echo "<tr><th rowspan='2'>秘書審核</th><th>審核結果</th><td colspan='2'>".$data['results']."</td></tr>";
     echo "<tr><th>審查意見</th><td colspan='2'>".$data['secretary_opinion']."</td></tr>";
-    echo "<tr><th>校長審核結果</th><td colspan='3'>".$data['principal＿sign']."</td></tr>";
+    if($data['principal＿sign'])
+        echo "<tr><th>校長審核結果</th><td colspan='3'>核准</td></tr>";
+    else if($data['progress'] != 4)
+        echo "<tr><th>校長審核結果</th><td colspan='3'></td></tr>";
+    else
+        echo "<tr><th>校長審核結果</th><td colspan='3'>否決</td></tr>";
     ?>
          
     </table>
