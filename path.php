@@ -4,7 +4,14 @@
   session_start();
   if($user){
       if($user["authority"] == 1){
-          header("Location:todoAddForm.php");
+          $_SESSION['sid'] = $_POST['account'];
+          $_SESSION['id'] = "student";
+          if($_SESSION[$_POST['account']] == "OK"){
+                header("Location:applyStatus.php");
+            }else{
+                header("Location:todoAddForm.php");
+          }
+          
       }else if($user["authority"] == 2){
             $_SESSION['id'] = "teacher";
             header("Location:teacher.php");

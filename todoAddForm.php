@@ -30,7 +30,7 @@ th{
 </head>
 <body style="text-align: center;">
 <h2>貧困學生補助經費申請表</h2>
-<form method="post">
+<form method="post" action="studentApply.php">
       <table width="400" border="1">
       <tr><th>申請人</th> <td><input name="student" type="text" id="sname" /></td>
 

@@ -31,6 +31,9 @@ th{
 <body style="text-align: center;">
     <h2>貧困學生補助經費申請表</h2>
     <table id="rs" width="400" border="1">
+    <?php
+    
+    ?>
         <tr><th>申請人</th> <td></td> <th>學號</th> <td></td></tr>
         <tr><th>父親</th> <td></td><th>母親</th> <td></td></tr>
         <tr><th>申請補助種類</th><td colspan="3"></td></tr>
