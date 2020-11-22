@@ -25,6 +25,16 @@ function Student_Apply_List(){
     }
     return false;
 }
+function Student_Apply_One($sid){
+    require("dbconnect.php");
+    $sql = "select * from apply where sid=$sid";
+    //執行SQL
+    $result = mysqli_query($conn, $sql);
+    if ($result){
+        return mysqli_fetch_assoc($result);
+    }
+    return false;
+}
 function Give_Option($progress, $option, $sid){
     require("dbconnect.php");
     if($progress ===  2){
