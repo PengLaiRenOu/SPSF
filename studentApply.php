@@ -17,7 +17,8 @@ require("model/apply.php");
 <?php
   $a = Student_Apply($_POST['student'], $_POST['sID'], $_POST['father'], $_POST['mother'], $_POST['applyType']);
   if($a){
-    $_SESSION[$_SESSION['sid']] = "OK";
+    $_SESSION[$_SESSION['id']] = "OK";
+    $_SESSION['sid'] = $_POST['sID'];
     header("Location:applyStatus.php");
   }else{
       echo "no";
